@@ -30,4 +30,5 @@ public class DemoComponent extends GUIComponent {
     public void setFooter(String footer) {
         this.footer = footer;
     }
+
 }

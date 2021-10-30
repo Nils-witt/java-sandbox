@@ -13,6 +13,7 @@ public class GUIComponent {
 
     public GUIComponent(int id) {
         this.id = id;
+        setUpHandlers();
     }
 
     public int getId() {
@@ -63,10 +64,12 @@ public class GUIComponent {
             } catch (NoSuchFieldException e) {
                 // e.printStackTrace();
             }
+            if (key.equals("id")) {
+                field = null;
+            }
             if (field != null) {
                 try {
                     field.setAccessible(true);
-                    System.out.println(key + ": " + field.getType().getSimpleName());
                     if (field.getType() == String.class) {
                         field.set(this, value);
                     } else if (field.getType() == int.class) {
@@ -93,5 +96,10 @@ public class GUIComponent {
             current = current.getSuperclass();
         }
         return fieldArrayList.toArray(new Field[0]);
+    }
+
+
+    public void setUpHandlers() {
+
     }
 }
